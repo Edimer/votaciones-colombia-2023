@@ -1,0 +1,119 @@
+---
+title: "Web scraping - Extracción de datos"
+subtitle: "Elecciones regionales Colombia 2023"
+author: "Sidereus"
+lang: es 
+execute: 
+  eval: true
+  echo: true
+  warning: false
+format:
+  html:
+    page-layout: article
+    fig-width: 6
+    fig-height: 4.5
+    toc: true
+    toc-title: "Tabla de contenido"
+    smooth-scroll: true
+    code-fold: true
+    df-print: paged
+    toc-location: left
+    number-depth: 4
+    theme: yeti
+    code-copy: true
+    highlight-style: github
+    css: estilo.css
+    code-tools:
+      source: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.align = "center", warning = FALSE, message = FALSE)
+```
+
+# Recursos de información
+
+- [Elecciones locales de Bogotá de 2023](https://es.wikipedia.org/wiki/Elecciones_locales_de_Bogot%C3%A1_de_2023#)
+- [Elecciones locales de Medellín de 2023](https://es.wikipedia.org/wiki/Elecciones_locales_de_Medell%C3%ADn_de_2023#)
+- [Elecciones locales de Cali de 2023](https://es.wikipedia.org/wiki/Elecciones_locales_de_Cali_de_2023)
+- [Elecciones locales de Barranquilla de 2023](https://es.wikipedia.org/wiki/Elecciones_locales_de_Barranquilla_de_2023)
+- [Elecciones locales de Cartagena de Indias de 2023](https://es.wikipedia.org/wiki/Elecciones_locales_de_Cartagena_de_Indias_de_2023)
+
+# Bibliotecas
+
+```{r}
+library(tidyverse)
+library(rvest)
+```
+
+# Funciones
+
+```{r}
+source("funciones-r/infoBogota.R", encoding = "UTF-8")
+source("funciones-r/infoMedellin.R", encoding = "UTF-8")
+source("funciones-r/infoCali.R", encoding = "UTF-8")
+source("funciones-r/infoBquilla.R", encoding = "UTF-8")
+source("funciones-r/infoCartagena.R", encoding = "UTF-8")
+```
+
+# Extracción de datos
+
+:::{.panel-tabset}
+
+## Bogotá
+
+```{r}
+url_bogota <- "https://es.wikipedia.org/wiki/Elecciones_locales_de_Bogot%C3%A1_de_2023#"
+
+tabla_bogota <- infoBogota(url = url_bogota)
+tabla_bogota
+```
+
+## Medellín
+
+```{r}
+url_medellin <- "https://es.wikipedia.org/wiki/Elecciones_locales_de_Medell%C3%ADn_de_2023"
+
+tabla_medellin <- infoMedellin(url = url_medellin)
+tabla_medellin
+```
+
+## Cali
+
+```{r}
+url_cali <- "https://es.wikipedia.org/wiki/Elecciones_locales_de_Cali_de_2023"
+
+tabla_cali <- infoCali(url = url_cali)
+tabla_cali
+```
+
+## Barranquilla
+
+```{r}
+url_bquilla <- "https://es.wikipedia.org/wiki/Elecciones_locales_de_Barranquilla_de_2023"
+
+tabla_bquilla <- infoBquilla(url = url_bquilla)
+tabla_bquilla
+```
+
+## Cartagena de Indias
+
+```{r}
+url_cartagena <- "https://es.wikipedia.org/wiki/Elecciones_locales_de_Cartagena_de_Indias_de_2023"
+
+tabla_cartagena <- infoCartagena(url = url_cartagena)
+tabla_cartagena
+```
+
+:::
+
+# Exportando datos
+
+```{r, eval = FALSE}
+write_csv(tabla_bogota, "datos-encuestas/tabla_bogota.csv")
+write_csv(tabla_medellin, "datos-encuestas/tabla_medellín.csv")
+write_csv(tabla_cali, "datos-encuestas/tabla_cali.csv")
+write_csv(tabla_bquilla, "datos-encuestas/tabla_bquilla.csv")
+write_csv(tabla_cartagena, "datos-encuestas/tabla_cartagena.csv")
+```
+

@@ -1,0 +1,80 @@
+---
+title: "Análisis exploratorio de datos"
+subtitle: "Elecciones regionales Colombia 2023"
+author: "Sidereus"
+lang: es 
+execute: 
+  eval: true
+  echo: true
+  warning: false
+format:
+  html:
+    page-layout: article
+    fig-width: 6
+    fig-height: 4.5
+    toc: true
+    toc-title: "Tabla de contenido"
+    smooth-scroll: true
+    code-fold: true
+    df-print: paged
+    toc-location: left
+    number-depth: 4
+    theme: yeti
+    code-copy: true
+    highlight-style: github
+    css: estilo.css
+    code-tools:
+      source: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.align = "center", warning = FALSE, message = FALSE)
+```
+
+# Recursos de información
+
+- [Elecciones locales de Bogotá de 2023](https://es.wikipedia.org/wiki/Elecciones_locales_de_Bogot%C3%A1_de_2023#)
+- [Elecciones locales de Medellín de 2023](https://es.wikipedia.org/wiki/Elecciones_locales_de_Medell%C3%ADn_de_2023#)
+- [Elecciones locales de Cali de 2023](https://es.wikipedia.org/wiki/Elecciones_locales_de_Cali_de_2023)
+- [Elecciones locales de Barranquilla de 2023](https://es.wikipedia.org/wiki/Elecciones_locales_de_Barranquilla_de_2023)
+- [Elecciones locales de Cartagena de Indias de 2023](https://es.wikipedia.org/wiki/Elecciones_locales_de_Cartagena_de_Indias_de_2023)
+
+# Bibliotecas
+
+```{r}
+library(tidyverse)
+
+theme_set(theme_minimal())
+```
+
+# Datos
+
+```{r}
+tabla_bogota <- read_csv("datos-encuestas/tabla_bogota.csv")
+tabla_medellin <- read_csv("datos-encuestas/tabla_medellín.csv")
+tabla_cali <- read_csv("datos-encuestas/tabla_cali.csv")
+tabla_bquilla <- read_csv("datos-encuestas/tabla_bquilla.csv")
+tabla_cartagena <- read_csv("datos-encuestas/tabla_cartagena.csv")
+```
+
+# Distribución de intención de voto
+
+:::{.panel-tabset}
+
+## Bogotá
+
+```{r}
+tabla_bogota %>% 
+  pivot_longer(cols = c(Oviedo:`NS/NR`)) %>% 
+  ggplot(aes(x = value)) +
+  facet_wrap(~name, scales = "free") +
+  geom_density()
+
+tabla_bogota %>%
+  pivot_longer(cols = c(Oviedo:`NS/NR`)) %>%
+  ggplot(aes(x = reorder(name, value, na.rm = TRUE), y = value)) +
+  geom_boxplot() +
+  scale_y_log10()
+```
+
+:::
