@@ -38,6 +38,7 @@ knitr::opts_chunk$set(fig.align = "center", warning = FALSE, message = FALSE)
 - [Elecciones locales de Cali de 2023](https://es.wikipedia.org/wiki/Elecciones_locales_de_Cali_de_2023)
 - [Elecciones locales de Barranquilla de 2023](https://es.wikipedia.org/wiki/Elecciones_locales_de_Barranquilla_de_2023)
 - [Elecciones locales de Cartagena de Indias de 2023](https://es.wikipedia.org/wiki/Elecciones_locales_de_Cartagena_de_Indias_de_2023)
+- [Elecciones locales de Bucaramanga de 2023](https://es.wikipedia.org/wiki/Elecciones_locales_de_Bucaramanga_de_2023)
 
 # Bibliotecas
 
@@ -54,6 +55,7 @@ source("funciones-r/infoMedellin.R", encoding = "UTF-8")
 source("funciones-r/infoCali.R", encoding = "UTF-8")
 source("funciones-r/infoBquilla.R", encoding = "UTF-8")
 source("funciones-r/infoCartagena.R", encoding = "UTF-8")
+source("funciones-r/infoBucaramanga.R", encoding = "UTF-8")
 ```
 
 # Extracción de datos
@@ -105,6 +107,15 @@ tabla_cartagena <- infoCartagena(url = url_cartagena)
 tabla_cartagena
 ```
 
+## Bucaramanga
+
+```{r}
+url_bcmanga <- "https://es.wikipedia.org/wiki/Elecciones_locales_de_Bucaramanga_de_2023"
+
+tabla_bucaramanga <- infoBucaramanga(url = url_bcmanga)
+tabla_bucaramanga
+```
+
 :::
 
 # Exportando datos
@@ -115,5 +126,6 @@ write_csv(tabla_medellin, "datos-encuestas/tabla_medellín.csv")
 write_csv(tabla_cali, "datos-encuestas/tabla_cali.csv")
 write_csv(tabla_bquilla, "datos-encuestas/tabla_bquilla.csv")
 write_csv(tabla_cartagena, "datos-encuestas/tabla_cartagena.csv")
+write_csv(tabla_bucaramanga, "datos-encuestas/tabla_bucaramanga.csv")
 ```
 
