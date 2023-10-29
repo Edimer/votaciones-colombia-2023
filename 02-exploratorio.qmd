@@ -1,6 +1,5 @@
 ---
-title: "Análisis exploratorio de datos"
-subtitle: "Elecciones regionales Colombia 2023"
+title: "Elecciones regionales Colombia 2023 - Análisis exploratorio de datos"
 author: "Sidereus"
 lang: es 
 execute: 
@@ -12,6 +11,7 @@ format:
     page-layout: article
     fig-width: 6
     fig-height: 4.5
+    fig-align: center
     toc: true
     toc-title: "Tabla de contenido"
     smooth-scroll: true
@@ -43,38 +43,350 @@ knitr::opts_chunk$set(fig.align = "center", warning = FALSE, message = FALSE)
 
 ```{r}
 library(tidyverse)
+library(splines)
+library(broom)
+library(glue)
+library(corrr)
 
 theme_set(theme_minimal())
 ```
 
-# Datos
+# Funciones
 
 ```{r}
-tabla_bogota <- read_csv("datos-encuestas/tabla_bogota.csv")
-tabla_medellin <- read_csv("datos-encuestas/tabla_medellín.csv")
-tabla_cali <- read_csv("datos-encuestas/tabla_cali.csv")
-tabla_bquilla <- read_csv("datos-encuestas/tabla_bquilla.csv")
-tabla_cartagena <- read_csv("datos-encuestas/tabla_cartagena.csv")
+source("funciones-r/02-exploratorio/distPlot.R", encoding = "UTF-8")
+source("funciones-r/02-exploratorio/seriePlot.R", encoding = "UTF-8")
+source("funciones-r/02-exploratorio/seriePlotIndividual.R", encoding = "UTF-8")
+source("funciones-r/02-exploratorio/distPlotIndividual.R", encoding = "UTF-8")
+source("funciones-r/02-exploratorio/corPlot.R", encoding = "UTF-8")
 ```
 
-# Distribución de intención de voto
+# Datos
+
+- Los datos pueden ser descargados del [repositorio de Github.](https://github.com/Edimer/votaciones-colombia-2023/tree/main/datos-encuestas)
+
+```{r}
+tabla_bogota <-
+  read_csv("datos-encuestas/tabla_bogota.csv")
+tabla_medellin <-
+  read_csv("datos-encuestas/tabla_medellín.csv")
+tabla_cali <-
+  read_csv("datos-encuestas/tabla_cali.csv")
+tabla_bquilla <-
+  read_csv("datos-encuestas/tabla_bquilla.csv")
+tabla_cartagena <-
+  read_csv("datos-encuestas/tabla_cartagena.csv")
+tabla_bucaramanga <-
+  read_csv("datos-encuestas/tabla_bucaramanga.csv")
+```
+
+- Asigno las tablas a una lista para poder identificarlas a través del nombre de la ciudad:
+
+```{r}
+lista_tablas <- list(
+  bogota = tabla_bogota,
+  medellin = tabla_medellin,
+  cali = tabla_cali,
+  bucaramanga = tabla_bucaramanga,
+  cartagena = tabla_cartagena,
+  barranquilla = tabla_bquilla
+)
+```
+
+
+# Intención de voto todos
 
 :::{.panel-tabset}
 
 ## Bogotá
 
 ```{r}
-tabla_bogota %>% 
-  pivot_longer(cols = c(Oviedo:`NS/NR`)) %>% 
-  ggplot(aes(x = value)) +
-  facet_wrap(~name, scales = "free") +
-  geom_density()
+distPlot(ciudad = "bogota", tablas = lista_tablas)
+```
 
-tabla_bogota %>%
-  pivot_longer(cols = c(Oviedo:`NS/NR`)) %>%
-  ggplot(aes(x = reorder(name, value, na.rm = TRUE), y = value)) +
-  geom_boxplot() +
-  scale_y_log10()
+## Medellín
+
+```{r}
+distPlot(ciudad = "medellin", tablas = lista_tablas)
+```
+
+## Cali
+
+```{r}
+distPlot(ciudad = "cali", tablas = lista_tablas)
+```
+
+## Bucaramanga
+
+```{r}
+distPlot(ciudad = "bucaramanga", tablas = lista_tablas)
+```
+
+## Barranquilla
+
+```{r}
+distPlot(ciudad = "barranquilla", tablas = lista_tablas)
+```
+
+## Cartagena
+
+```{r}
+distPlot(ciudad = "cartagena", tablas = lista_tablas)
+```
+
+:::
+
+# Intención de voto individual
+
+:::{.panel-tabset}
+
+## Bogotá
+
+- Ejemplo con candidato Oviedo.
+
+```{r}
+distPlotIndividual(ciudad = "bogota",
+                   candidato = "Oviedo",
+                   tablas = lista_tablas)
+```
+
+
+## Medellín
+
+- Ejemplo con candidato Gutiérrez
+
+```{r}
+distPlotIndividual(ciudad = "medellin",
+                   candidato = "Gutiérrez",
+                   tablas = lista_tablas)
+```
+
+## Cali
+
+- Ejemplo con candidato Alejandro Eder
+
+```{r}
+distPlotIndividual(ciudad = "cali",
+                   candidato = "Alejandro Eder",
+                   tablas = lista_tablas)
+```
+
+## Bucaramanga
+
+- Ejemplo con candidato Horacio Serpa
+
+```{r}
+distPlotIndividual(ciudad = "bucaramanga",
+                   candidato = "Horacio Serpa",
+                   tablas = lista_tablas)
+```
+
+## Barranquilla
+
+- Ejemplo con candidato Alejandro Char
+
+```{r}
+distPlotIndividual(ciudad = "barranquilla",
+                   candidato = "Alejandro Char",
+                   tablas = lista_tablas)
+```
+
+## Cartagena
+
+- Ejemplo con candidato Dumek Turbay
+
+```{r}
+distPlotIndividual(ciudad = "cartagena",
+                   candidato = "Dumek Turbay",
+                   tablas = lista_tablas)
+```
+
+:::
+
+# Tendencias todos los candidatos
+
+:::{.panel-tabset}
+
+## Bogotá
+
+```{r}
+#| column: screen-inset-right
+#| fig-width: 9
+#| fig-height: 6.5
+seriePlot(ciudad = "bogota", tablas = lista_tablas)
+```
+
+## Medellín
+
+```{r}
+#| column: screen-inset-right
+#| fig-width: 9
+#| fig-height: 6.5
+seriePlot(ciudad = "medellin", tablas = lista_tablas)
+```
+
+## Cali
+
+```{r}
+#| column: screen-inset-right
+#| fig-width: 9
+#| fig-height: 6.5
+seriePlot(ciudad = "cali", tablas = lista_tablas)
+```
+
+## Bucaramanga
+
+```{r}
+#| column: screen-inset-right
+#| fig-width: 9
+#| fig-height: 6.5
+seriePlot(ciudad = "bucaramanga", tablas = lista_tablas)
+```
+
+## Barranquilla
+
+```{r}
+#| column: screen-inset-right
+#| fig-width: 9
+#| fig-height: 6.5
+seriePlot(ciudad = "barranquilla", tablas = lista_tablas)
+```
+
+## Cartagena
+
+```{r}
+#| column: screen-inset-right
+#| fig-width: 9
+#| fig-height: 6.5
+seriePlot(ciudad = "cartagena", tablas = lista_tablas)
+```
+
+:::
+
+# Tendencias individuales
+
+:::{.panel-tabset}
+
+## Bogotá
+
+- Ejemplo con candidato Oviedo.
+
+```{r}
+
+
+seriePlotIndividual(ciudad = "bogota",
+                    candidato = "Oviedo",
+                    tablas = lista_tablas)
+```
+
+## Medellín
+
+- Ejemplo con candidato Gutiérrez
+
+```{r}
+seriePlotIndividual(ciudad = "medellin",
+                    candidato = "Gutiérrez",
+                    tablas = lista_tablas)
+```
+
+## Cali
+
+- Ejemplo con candidato Alejandro Eder
+
+```{r}
+seriePlotIndividual(ciudad = "cali",
+                    candidato = "Alejandro Eder",
+                    tablas = lista_tablas)
+```
+
+## Bucaramanga
+
+- Ejemplo con candidato Horacio Serpa
+
+```{r}
+seriePlotIndividual(ciudad = "bucaramanga",
+                    candidato = "Horacio Serpa",
+                    tablas = lista_tablas)
+```
+
+## Barranquilla
+
+- Ejemplo con candidato Alejandro Char
+
+```{r}
+seriePlotIndividual(ciudad = "barranquilla",
+                    candidato = "Alejandro Char",
+                    tablas = lista_tablas)
+```
+
+## Cartagena
+
+- Ejemplo con candidato Dumek Turbay
+
+```{r}
+seriePlotIndividual(ciudad = "cartagena",
+                    candidato = "Dumek Turbay",
+                    tablas = lista_tablas)
+```
+
+:::
+
+# Correlaciones de intención de voto
+
+:::{.panel-tabset}
+
+## Bogotá
+
+```{r}
+#| column: screen-inset-right
+#| fig-width: 8
+#| fig-height: 6
+corPlot(ciudad = "bogota", tablas = lista_tablas)
+```
+
+## Medellín
+
+```{r}
+#| column: screen-inset-right
+#| fig-width: 9
+#| fig-height: 6.5
+corPlot(ciudad = "medellin", tablas = lista_tablas)
+```
+
+## Cali
+
+```{r}
+#| column: screen-inset-right
+#| fig-width: 9
+#| fig-height: 6.5
+corPlot(ciudad = "cali", tablas = lista_tablas)
+```
+
+## Bucaramanga
+
+```{r}
+#| column: screen-inset-right
+#| fig-width: 9
+#| fig-height: 6.5
+corPlot(ciudad = "bucaramanga", tablas = lista_tablas)
+```
+
+## Barranquilla
+
+```{r}
+#| column: screen-inset-right
+#| fig-width: 9
+#| fig-height: 6.5
+corPlot(ciudad = "barranquilla", tablas = lista_tablas)
+```
+
+## Cartagena
+
+```{r}
+#| column: screen-inset-right
+#| fig-width: 9
+#| fig-height: 6.5
+corPlot(ciudad = "cartagena", tablas = lista_tablas)
 ```
 
 :::

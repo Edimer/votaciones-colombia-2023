@@ -1,0 +1,4 @@
+- source: 01-extraccion-datos.qmd
+  quarto-pub:
+    - id: d85f1049-2f3f-4a1b-8548-f5eaeee4963d
+      url: 'https://edimer.quarto.pub/encuestas-elecciones-regionales-colombia-2023'
