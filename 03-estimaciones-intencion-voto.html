@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.449">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Sidereus">
+
+<title>Elecciones regionales Colombia 2023 - Estimación de intención de voto</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="03-estimaciones-intencion-voto_files/libs/clipboard/clipboard.min.js"></script>
+<script src="03-estimaciones-intencion-voto_files/libs/quarto-html/quarto.js"></script>
+<script src="03-estimaciones-intencion-voto_files/libs/quarto-html/popper.min.js"></script>
+<script src="03-estimaciones-intencion-voto_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="03-estimaciones-intencion-voto_files/libs/quarto-html/anchor.min.js"></script>
+<link href="03-estimaciones-intencion-voto_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="03-estimaciones-intencion-voto_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="03-estimaciones-intencion-voto_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="03-estimaciones-intencion-voto_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="03-estimaciones-intencion-voto_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<style>html{ scroll-behavior: smooth; }</style>
+<script src="03-estimaciones-intencion-voto_files/libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<link href="03-estimaciones-intencion-voto_files/libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="03-estimaciones-intencion-voto_files/libs/datatables-binding-0.30/datatables.js"></script>
+<script src="03-estimaciones-intencion-voto_files/libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="03-estimaciones-intencion-voto_files/libs/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="03-estimaciones-intencion-voto_files/libs/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="03-estimaciones-intencion-voto_files/libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script>
+<link href="03-estimaciones-intencion-voto_files/libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="03-estimaciones-intencion-voto_files/libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="03-estimaciones-intencion-voto_files/libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="03-estimaciones-intencion-voto_files/libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="estilo.css">
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenido</h2>
+   
+  <ul>
+  <li><a href="#recursos-de-información" id="toc-recursos-de-información" class="nav-link active" data-scroll-target="#recursos-de-información">Recursos de información</a></li>
+  <li><a href="#bibliotecas" id="toc-bibliotecas" class="nav-link" data-scroll-target="#bibliotecas">Bibliotecas</a></li>
+  <li><a href="#funciones" id="toc-funciones" class="nav-link" data-scroll-target="#funciones">Funciones</a></li>
+  <li><a href="#datos" id="toc-datos" class="nav-link" data-scroll-target="#datos">Datos</a></li>
+  <li><a href="#estimación-de-intención-de-voto" id="toc-estimación-de-intención-de-voto" class="nav-link" data-scroll-target="#estimación-de-intención-de-voto">Estimación de intención de voto</a></li>
+  <li><a href="#exportando-estimaciones" id="toc-exportando-estimaciones" class="nav-link" data-scroll-target="#exportando-estimaciones">Exportando estimaciones</a></li>
+  <li><a href="#libro-de-referencia" id="toc-libro-de-referencia" class="nav-link" data-scroll-target="#libro-de-referencia">Libro de referencia</a></li>
+  </ul>
+</nav>
+</div>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Elecciones regionales Colombia 2023 - Estimación de intención de voto</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Código</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Mostrar todo el código</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Ocultar todo el código</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">Ver el código fuente</a></li></ul></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Sidereus </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="recursos-de-información" class="level1">
+<h1>Recursos de información</h1>
+<ul>
+<li><a href="https://es.wikipedia.org/wiki/Elecciones_locales_de_Bogot%C3%A1_de_2023#">Elecciones locales de Bogotá de 2023</a></li>
+<li><a href="https://es.wikipedia.org/wiki/Elecciones_locales_de_Medell%C3%ADn_de_2023#">Elecciones locales de Medellín de 2023</a></li>
+<li><a href="https://es.wikipedia.org/wiki/Elecciones_locales_de_Cali_de_2023">Elecciones locales de Cali de 2023</a></li>
+<li><a href="https://es.wikipedia.org/wiki/Elecciones_locales_de_Barranquilla_de_2023">Elecciones locales de Barranquilla de 2023</a></li>
+<li><a href="https://es.wikipedia.org/wiki/Elecciones_locales_de_Cartagena_de_Indias_de_2023">Elecciones locales de Cartagena de Indias de 2023</a></li>
+</ul>
+</section>
+<section id="bibliotecas" class="level1">
+<h1>Bibliotecas</h1>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(infer)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(devtools)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>())</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="funciones" class="level1">
+<h1>Funciones</h1>
+<ul>
+<li>Las funciones con los seis métodos de estimación pueden ser obtenidas en el <a href="https://github.com/Edimer/Encuestas-Colombia-2022/tree/main/functions-R">repositorio de Github para intención de voto en elecciones presidenciales del año 2022 en Colombia.</a></li>
+<li>La función que integra todos los métodos de estimación (6 en total) puede ser obtenida en el <a href="">repositorio de Github.</a></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source_url</span>(<span class="st">"https://raw.githubusercontent.com/Edimer/Encuestas-Colombia-2022/main/functions-R/infer1.R"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">source_url</span>(<span class="st">"https://raw.githubusercontent.com/Edimer/Encuestas-Colombia-2022/main/functions-R/infer2.R"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">source_url</span>(<span class="st">"https://raw.githubusercontent.com/Edimer/Encuestas-Colombia-2022/main/functions-R/infer3.R"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">source_url</span>(<span class="st">"https://raw.githubusercontent.com/Edimer/Encuestas-Colombia-2022/main/functions-R/infer4.R"</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">source_url</span>(<span class="st">"https://raw.githubusercontent.com/Edimer/Encuestas-Colombia-2022/main/functions-R/infer5.R"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">source_url</span>(<span class="st">"https://raw.githubusercontent.com/Edimer/Encuestas-Colombia-2022/main/functions-R/infer6.R"</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"funciones-r/03-inferencia/intencionVoto.R"</span>, <span class="at">encoding =</span> <span class="st">"UTF-8"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="datos" class="level1">
+<h1>Datos</h1>
+<ul>
+<li>Los datos pueden ser descargados del <a href="https://github.com/Edimer/votaciones-colombia-2023/tree/main/datos-encuestas">repositorio de Github.</a></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>tabla_bogota <span class="ot">&lt;-</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(<span class="st">"datos-encuestas/tabla_bogota.csv"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>tabla_medellin <span class="ot">&lt;-</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(<span class="st">"datos-encuestas/tabla_medellín.csv"</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>tabla_cali <span class="ot">&lt;-</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(<span class="st">"datos-encuestas/tabla_cali.csv"</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>tabla_bquilla <span class="ot">&lt;-</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(<span class="st">"datos-encuestas/tabla_bquilla.csv"</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>tabla_cartagena <span class="ot">&lt;-</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(<span class="st">"datos-encuestas/tabla_cartagena.csv"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Fernando Támara</span><span class="st">`</span>,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Hector Pérez</span><span class="st">`</span>,</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Reynaldo Tovar</span><span class="st">`</span>,</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Luis Carvajalino</span><span class="st">`</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>tabla_bucaramanga <span class="ot">&lt;-</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(<span class="st">"datos-encuestas/tabla_bucaramanga.csv"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<ul>
+<li>Asigno las tablas a una lista para poder identificarlas a través del nombre de la ciudad:</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>lista_tablas <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">bogota =</span> tabla_bogota,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">medellin =</span> tabla_medellin,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">cali =</span> tabla_cali,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">bucaramanga =</span> tabla_bucaramanga,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">cartagena =</span> tabla_cartagena,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">barranquilla =</span> tabla_bquilla</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="estimación-de-intención-de-voto" class="level1">
+<h1>Estimación de intención de voto</h1>
+<ul>
+<li>En este caso se asume que cada encuesta es una <em>realización o experimento</em>, el parámetro de interés es <span class="math inline">\(\mu_p\)</span>, que podría ser descrito como el promedio de intención de voto. Esta proporción es de interés estimarla para saber cuál sería el verdadero porcentaje de personas que votaría por un candidato.</li>
+<li>Se proponen seis métodos para estimar la intención de voto:
+<ul>
+<li><strong>Inferencia clásica original (infer1):</strong> prueba <em>t-student</em> para una población. En este caso la variable de interés (proporción) se mantiene en sus unidades originales.</li>
+<li><strong>Inferencia clásica logaritmo (infer2):</strong> prueba <em>t-student</em> para una población. En este caso la variable de interés (proporción) se transforma a través de logaritmos.</li>
+<li><strong>Inferencia no paramétrica: Bootstrapping (infer3):</strong> implementación de técnicas de remuestreo no paramétrico para estimación puntual y construcción de intervalos de confianza <strong>promedio</strong> de intención de voto. Intervalos de confianza con el método de percentiles.</li>
+<li><strong>Inferencia no paramétrica: Bootstrapping (infer4):</strong> implementación de técnicas de remuestreo no paramétrico para estimación puntual y construcción de intervalos de confianza para el <strong>promedio</strong> de intención de voto. Intervalos de confianza con el método de error estándar.</li>
+<li><strong>Inferencia no paramétrica: Bootstrapping (infer5):</strong> implementación de técnicas de remuestreo no paramétrico para estimación puntual y construcción de intervalos de confianza para la <strong>mediana</strong> de intención de voto. Intervalos de confianza con el método de percentiles.</li>
+<li><strong>Inferencia no paramétrica: Bootstrapping (infer6):</strong> implementación de técnicas de remuestreo no paramétrico para estimación puntual y construcción de intervalos de confianza para el <strong>máximo</strong> de intención de voto. Intervalos de confianza con el método de percentiles.</li>
+</ul></li>
+</ul>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Bogotá</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Medellín</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Cali</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false" href="">Bucaramanga</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false" href="">Barranquilla</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-6-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-6" role="tab" aria-controls="tabset-1-6" aria-selected="false" href="">Cartagena</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2023</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>infer_bogota <span class="ot">&lt;-</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">intencionVoto</span>(<span class="at">ciudad =</span> <span class="st">"bogota"</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">tablas =</span> lista_tablas,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">num_reps =</span> <span class="dv">10000</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>infer_bogota <span class="sc">%&gt;%</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(is.numeric, <span class="sc">~</span> <span class="fu">round</span>(., <span class="at">digits =</span> <span class="dv">2</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datatable</span>(<span class="at">rownames =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-7e2ffa1ffed23c47a0a7" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-7e2ffa1ffed23c47a0a7">{"x":{"filter":"none","vertical":false,"data":[["Oviedo","Molano","Lara","Galán","Robledo","Bolívar","Vargas","Quintero","Ramos","Voto en Blanco","Ninguno","NS/NR","Oviedo","Molano","Lara","Galán","Robledo","Bolívar","Vargas","Quintero","Ramos","Voto en Blanco","Ninguno","NS/NR","Oviedo","Molano","Lara","Galán","Robledo","Bolívar","Vargas","Quintero","Ramos","Voto en Blanco","Ninguno","NS/NR","Oviedo","Molano","Lara","Galán","Robledo","Bolívar","Vargas","Quintero","Ramos","Voto en Blanco","Ninguno","NS/NR","Oviedo","Molano","Lara","Galán","Robledo","Bolívar","Vargas","Quintero","Ramos","Voto en Blanco","Ninguno","NS/NR","Oviedo","Molano","Lara","Galán","Robledo","Bolívar","Vargas","Quintero","Ramos","Voto en Blanco","Ninguno","NS/NR"],["t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ"],[17.83,5.07,6.04,34.32,2.58,21.26,2.61,0.67,0.84,6.04,4.37,7.92,17.66,4.82,5.55,33.25,2.25,21.13,2.44,0.59,0.73,5.57,3.78,5.79,17.83,5.07,6.05,34.31,2.58,21.26,2.61,0.67,0.84,6.05,4.37,7.93,17.83,5.07,6.05,34.31,2.58,21.26,2.61,0.67,0.84,6.05,4.37,7.93,18.01,4.59,4.81,36.75,2.11,21.66,2.25,0.54,0.68,5.35,4.05,6.35,23.58,8.970000000000001,12.96,42.49,7.23,26.37,5.6,1.85,3.13,14.46,6.56,27.89],[17.04,4.49,5.12,31.9,2.05,20.49,2.24,0.5,0.61,5.13,-3.76,3.45,17.86,5.31,5.83,31.41,2.83,21.35,3.12,1.44,1.56,5.85,1.14,4.57,17.06,4.53,5.2,31.89,2.1,20.51,2.26,0.51,0.64,5.24,2,4.79,17.07,4.52,5.17,31.98,2.07,20.52,2.25,0.51,0.62,5.17,1.36,3.95,17,4.1,4.4,33.1,1.6,21.3,1.9,0.4,0.5,4.5,2,4.35,20.5,8.199999999999999,10.6,41.2,5.1,24.4,4.4,1.6,1.5,10.2,2,9.300000000000001],[18.62,5.64,6.96,36.75,3.1,22.04,2.98,0.84,1.06,6.96,12.49,12.39,19.49,6.37,7.37,37.34,3.73,22.93,3.79,1.75,1.93,7.38,19.98,10.08,18.59,5.63,6.97,36.56,3.12,22,2.98,0.83,1.07,7,8.1,12.4,18.59,5.62,6.93,36.63,3.09,22,2.96,0.83,1.06,6.93,7.37,11.92,18.6,5.1,5.7,39.3,2.5,22.2,2.9,0.7,1,6.3,8.1,8.199999999999999,24.5,9.199999999999999,13.1,42.8,7.8,27.3,6,1.9,3.4,15.1,8.1,36.9]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Candidato<\/th>\n      <th>Método<\/th>\n      <th>Intención de voto (%)<\/th>\n      <th>L. Inferior<\/th>\n      <th>L. Superior<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4]}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2023</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>infer_medellin <span class="ot">&lt;-</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">intencionVoto</span>(<span class="at">ciudad =</span> <span class="st">"medellin"</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">tablas =</span> lista_tablas,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">num_reps =</span> <span class="dv">10000</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>infer_medellin <span class="sc">%&gt;%</span> </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(is.numeric, <span class="sc">~</span> <span class="fu">round</span>(., <span class="at">digits =</span> <span class="dv">2</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datatable</span>(<span class="at">rownames =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-0f2bfd26ed701ddf7f53" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-0f2bfd26ed701ddf7f53">{"x":{"filter":"none","vertical":false,"data":[["Aguinaga","Ballesteros","Bermúdez","Correa","Corredor","Duque","Gutiérrez","Hernández","Rendón","Restrepo","Tobón","Upegui","Valderrama","Mejía","Voto en Blanco","Ninguno","NS/NR","Aguinaga","Ballesteros","Bermúdez","Correa","Corredor","Duque","Gutiérrez","Hernández","Rendón","Restrepo","Tobón","Upegui","Valderrama","Mejía","Voto en Blanco","Ninguno","NS/NR","Aguinaga","Ballesteros","Bermúdez","Correa","Corredor","Duque","Gutiérrez","Hernández","Rendón","Restrepo","Tobón","Upegui","Valderrama","Mejía","Voto en Blanco","Ninguno","NS/NR","Aguinaga","Ballesteros","Bermúdez","Correa","Corredor","Duque","Gutiérrez","Hernández","Rendón","Restrepo","Tobón","Upegui","Valderrama","Mejía","Voto en Blanco","Ninguno","NS/NR","Aguinaga","Ballesteros","Bermúdez","Correa","Corredor","Duque","Gutiérrez","Hernández","Rendón","Restrepo","Tobón","Upegui","Valderrama","Mejía","Voto en Blanco","Ninguno","NS/NR","Aguinaga","Ballesteros","Bermúdez","Correa","Corredor","Duque","Gutiérrez","Hernández","Rendón","Restrepo","Tobón","Upegui","Valderrama","Mejía","Voto en Blanco","Ninguno","NS/NR"],["t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ"],[1.59,0.16,0.16,2.35,4.16,2.53,59.29,0.46,1.13,1,2.97,13.52,0.83,0.2,7.11,4.35,7.41,1.39,0.14,0.13,1.88,3.72,2.29,58.61,0.42,0.6899999999999999,0.62,2.71,13.08,0.55,0.13,6.46,3.96,6.72,1.58,0.16,0.16,2.35,4.15,2.54,59.29,0.46,1.14,1,2.97,13.5,0.83,0.2,7.12,4.36,7.42,1.58,0.16,0.16,2.35,4.15,2.54,59.29,0.46,1.14,1,2.97,13.5,0.83,0.2,7.12,4.36,7.42,1.69,0.02,0,1.84,3.48,2.31,62.63,0.52,0.41,0.37,2.94,14,0.37,0,6.91,4.22,6.84,3.85,0.78,1.46,11.44,10.82,4.45,70.18000000000001,0.76,7.38,8.02,6.75,22.51,6.35,2.72,19.83,6.52,13.14],[1.28,0.08,0.05,1.59,3.44,0.9399999999999999,56.56,0.15,0.54,0.43,2.53,12.44,0.37,0,5.92,0.55,5.38,2.08,1.07,1.05,2.44,4.11,2.14,56.71,1.13,1.39,1.35,3.28,12.95,1.32,1.03,6.56,2.42,6,1.3,0.09,0.07000000000000001,1.72,3.5,1.55,56.54,0.21,0.63,0.54,2.56,12.45,0.46,0.05,6.05,2.5,5.72,1.29,0.09,0.06,1.62,3.46,1.44,56.67,0.23,0.57,0.45,2.55,12.47,0.39,0.01,5.96,2.33,5.66,1.4,0,0,1.4,3.1,1.35,56,0,0,0,2.7,13.3,0,0,6.2,2,5.2,3.1,0.6,0.6,4.5,7.6,2.5,68.09999999999999,0.7,3.5,2.3,4.9,16.6,2.5,0.6,8.6,3,10],[1.89,0.24,0.27,3.11,4.87,4.13,62.01,0.76,1.72,1.58,3.4,14.59,1.29,0.39,8.300000000000001,8.15,9.449999999999999,2.73,1.21,1.21,3.38,5.42,5.06,62.65,1.79,2.06,1.95,4.2,15.31,1.83,1.23,8.48,10.18,9.949999999999999,1.88,0.24,0.28,3.16,4.88,3.75,61.82,0.67,1.76,1.64,3.41,14.54,1.34,0.41,8.35,6.3,9.220000000000001,1.88,0.24,0.27,3.07,4.84,3.64,61.9,0.68,1.71,1.56,3.39,14.54,1.28,0.38,8.27,6.39,9.19,1.9,0.1,0,2.1,4,4.05,64.8,0.7,0.9,0.9,3.3,14.5,0.7,0,7.6,7.4,10,4,0.8,1.8,13.7,12.1,5.3,71.09999999999999,0.8,7.9,10.3,7.5,24.1,8.300000000000001,3.7,21.7,7.4,13.9]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Candidato<\/th>\n      <th>Método<\/th>\n      <th>Intención de voto (%)<\/th>\n      <th>L. Inferior<\/th>\n      <th>L. Superior<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4]}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2023</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>infer_cali <span class="ot">&lt;-</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">intencionVoto</span>(<span class="at">ciudad =</span> <span class="st">"cali"</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">tablas =</span> lista_tablas,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">num_reps =</span> <span class="dv">10000</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>infer_cali <span class="sc">%&gt;%</span> </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(is.numeric, <span class="sc">~</span> <span class="fu">round</span>(., <span class="at">digits =</span> <span class="dv">2</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datatable</span>(<span class="at">rownames =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-8ec2de2f38405b424ca3" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-8ec2de2f38405b424ca3">{"x":{"filter":"none","vertical":false,"data":[["Alejandro Eder","Diana Rojas","Roberto Ortiz","Deninson Mendoza","Miyerlandi Torres","Danis Rentería","Edilson Huérfano","Wilson Ruiz","Armando Aristizábal","Javier Garcés","Wilfredo Pardo","Heriberto Escobar","Eder Arrieta","Voto en blanco","Ninguno","NS/NR","Alejandro Eder","Diana Rojas","Roberto Ortiz","Deninson Mendoza","Miyerlandi Torres","Danis Rentería","Edilson Huérfano","Wilson Ruiz","Armando Aristizábal","Javier Garcés","Wilfredo Pardo","Heriberto Escobar","Eder Arrieta","Voto en blanco","Ninguno","NS/NR","Alejandro Eder","Diana Rojas","Roberto Ortiz","Deninson Mendoza","Miyerlandi Torres","Danis Rentería","Edilson Huérfano","Wilson Ruiz","Armando Aristizábal","Javier Garcés","Wilfredo Pardo","Heriberto Escobar","Eder Arrieta","Voto en blanco","Ninguno","NS/NR","Alejandro Eder","Diana Rojas","Roberto Ortiz","Deninson Mendoza","Miyerlandi Torres","Danis Rentería","Edilson Huérfano","Wilson Ruiz","Armando Aristizábal","Javier Garcés","Wilfredo Pardo","Heriberto Escobar","Eder Arrieta","Voto en blanco","Ninguno","NS/NR","Alejandro Eder","Diana Rojas","Roberto Ortiz","Deninson Mendoza","Miyerlandi Torres","Danis Rentería","Edilson Huérfano","Wilson Ruiz","Armando Aristizábal","Javier Garcés","Wilfredo Pardo","Heriberto Escobar","Eder Arrieta","Voto en blanco","Ninguno","NS/NR","Alejandro Eder","Diana Rojas","Roberto Ortiz","Deninson Mendoza","Miyerlandi Torres","Danis Rentería","Edilson Huérfano","Wilson Ruiz","Armando Aristizábal","Javier Garcés","Wilfredo Pardo","Heriberto Escobar","Eder Arrieta","Voto en blanco","Ninguno","NS/NR"],["t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ"],[24.51,9.82,33.02,2.9,10.52,6.48,1.51,1.82,0.7,0.93,0.17,0.68,0.38,9.32,7.78,11.52,23.09,9.199999999999999,32.45,2.47,9.380000000000001,5.39,1.05,1.19,0.47,0.6899999999999999,0.13,0.49,0.22,8.630000000000001,7.58,10.05,24.5,9.84,33.01,2.9,10.51,6.47,1.51,1.83,0.7,0.93,0.17,0.68,0.38,9.33,7.78,11.53,24.5,9.84,33.01,2.9,10.51,6.47,1.51,1.83,0.7,0.93,0.17,0.68,0.38,9.33,7.78,11.53,27.12,10.35,33.99,2.73,9.09,7.44,1.17,1.06,0.4,0.63,0,0.39,0.08,8.470000000000001,7.64,11.31,37.37,13.65,45.96,7.58,29.19,10.89,6.34,8.94,2.02,2.56,1.2,4.98,1.52,21.53,9.65,19.27],[22.12,7.9,31.17,2.33,8.630000000000001,5.48,1,0.59,-0.42,-0.39,0.07000000000000001,0.34,-0.6,8.07,4.37,8.84,21.58,8,31.57,2.98,9.08,5.22,1.69,1.6,0.8100000000000001,0.96,1.06,1.3,0.73,8.6,5.84,8.42,22.18,8.050000000000001,31.26,2.36,8.84,5.5,1.04,0.89,0.02,0.23,0.08,0.4,0,8.19,6,9.08,22.19,8.17,31.23,2.34,8.699999999999999,5.51,1.02,0.71,-0.08,0,0.07000000000000001,0.36,-0.31,8.130000000000001,5.96,9.09,23.1,8.4,32.2,2.1,8.6,5,0.3,0.45,0,0.05,0,0,0,7.85,6,8.699999999999999,33.1,11,40.7,6.2,24.9,10.1,4.4,3.4,0.1,0.7,0.8,1.6,0,16.7,6,18],[26.9,11.74,34.88,3.47,12.4,7.47,2.02,3.05,1.82,2.26,0.27,1.01,1.37,10.57,11.18,14.2,26.9,13.01,35.45,4.05,11.85,7.82,2.49,2.99,2.66,2.96,1.22,1.7,2.04,10.78,12.62,14.5,26.75,11.38,34.77,3.46,12.46,7.41,2.02,3.07,1.5,1.98,0.27,1.03,1.15,10.6,9.550000000000001,14,26.81,11.5,34.8,3.45,12.31,7.43,2,2.95,1.47,1.86,0.27,1,1.08,10.52,9.609999999999999,13.97,29.3,11,35.45,3.2,9.9,8.65,1.8,1.8,2.05,2.2,0,0.6,1.15,9.25,10.3,15.6,38.7,14,47.3,7.8,30.2,11.1,7.1,11.4,2.4,3.4,1.3,6,2.3,24.2,10.3,19.4]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Candidato<\/th>\n      <th>Método<\/th>\n      <th>Intención de voto (%)<\/th>\n      <th>L. Inferior<\/th>\n      <th>L. Superior<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4]}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2023</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>infer_bucaramanga <span class="ot">&lt;-</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">intencionVoto</span>(<span class="at">ciudad =</span> <span class="st">"bucaramanga"</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">tablas =</span> lista_tablas,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">num_reps =</span> <span class="dv">10000</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>infer_bucaramanga <span class="sc">%&gt;%</span> </span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(is.numeric, <span class="sc">~</span> <span class="fu">round</span>(., <span class="at">digits =</span> <span class="dv">2</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datatable</span>(<span class="at">rownames =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-2379268cb4812c0573ee" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-2379268cb4812c0573ee">{"x":{"filter":"none","vertical":false,"data":[["Consuelo Ordoñez","Fabián Oviedo","Horacio Serpa","Jaime Beltrán","Carlos Sotomonte","Manuel Parada","Ludwing Mantilla","Luis R. Ordoñez","Emiro Arias","Jorge Figueroa","Diego Tamayo","Carlos Parra","Jaime Calderón","Giovanni Álvarez","José Velasquez","Álvaro Torres","Voto en Blanco","Ninguno","NS/NR","Consuelo Ordoñez","Fabián Oviedo","Horacio Serpa","Jaime Beltrán","Carlos Sotomonte","Manuel Parada","Ludwing Mantilla","Luis R. Ordoñez","Emiro Arias","Jorge Figueroa","Diego Tamayo","Carlos Parra","Jaime Calderón","Giovanni Álvarez","José Velasquez","Álvaro Torres","Voto en Blanco","Ninguno","NS/NR","Consuelo Ordoñez","Fabián Oviedo","Horacio Serpa","Jaime Beltrán","Carlos Sotomonte","Manuel Parada","Ludwing Mantilla","Luis R. Ordoñez","Emiro Arias","Jorge Figueroa","Diego Tamayo","Carlos Parra","Jaime Calderón","Giovanni Álvarez","José Velasquez","Álvaro Torres","Voto en Blanco","Ninguno","NS/NR","Consuelo Ordoñez","Fabián Oviedo","Horacio Serpa","Jaime Beltrán","Carlos Sotomonte","Manuel Parada","Ludwing Mantilla","Luis R. Ordoñez","Emiro Arias","Jorge Figueroa","Diego Tamayo","Carlos Parra","Jaime Calderón","Giovanni Álvarez","José Velasquez","Álvaro Torres","Voto en Blanco","Ninguno","NS/NR","Consuelo Ordoñez","Fabián Oviedo","Horacio Serpa","Jaime Beltrán","Carlos Sotomonte","Manuel Parada","Ludwing Mantilla","Luis R. Ordoñez","Emiro Arias","Jorge Figueroa","Diego Tamayo","Carlos Parra","Jaime Calderón","Giovanni Álvarez","José Velasquez","Álvaro Torres","Voto en Blanco","Ninguno","NS/NR","Consuelo Ordoñez","Fabián Oviedo","Horacio Serpa","Jaime Beltrán","Carlos Sotomonte","Manuel Parada","Ludwing Mantilla","Luis R. Ordoñez","Emiro Arias","Jorge Figueroa","Diego Tamayo","Carlos Parra","Jaime Calderón","Giovanni Álvarez","José Velasquez","Álvaro Torres","Voto en Blanco","Ninguno","NS/NR"],["t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ"],[7.43,10.64,11.85,32.49,3.47,0.26,0.58,1.77,1.23,0.47,3.24,9.380000000000001,4.41,0.16,0.38,0.12,6.99,7.77,17.04,7.09,10.14,11.49,31.89,3.05,0.22,0.41,0.97,0.78,0.35,2.38,8.85,3.84,0.12,0.27,0.1,5.71,6.71,15.27,7.43,10.63,11.85,32.48,3.47,0.26,0.58,1.78,1.24,0.47,3.24,9.380000000000001,4.41,0.16,0.38,0.12,6.99,7.76,17.03,7.43,10.63,11.85,32.48,3.47,0.26,0.58,1.78,1.24,0.47,3.24,9.380000000000001,4.41,0.16,0.38,0.12,6.99,7.76,17.03,7.45,10.6,12.05,32.27,3.39,0.08,0.13,0.55,0.76,0.12,2.87,9.84,4.94,0,0.02,0,7.81,7.57,14.07,12.18,18.33,18.63,41.33,6.94,0.98,3.1,9.119999999999999,3.57,2.65,6.91,14.88,7.3,1.17,2.8,0.97,13.22,11.3,32.75],[6.65,9.52,10.89,30.57,2.87,0.09,0.29,0.91,-0.64,0.24,0.62,8.380000000000001,3.77,0.05,0.14,0.03,5.84,-5.13,10.41,7.32,10.07,11.48,30.77,3.45,1.08,1.21,1.51,0.84,1.19,1.66,8.779999999999999,4.02,1.04,1.12,1.03,5.28,1.58,11.68,6.68,9.57,10.92,30.63,2.9,0.12,0.32,1,0.15,0.27,1.4,8.42,3.77,0.07000000000000001,0.17,0.04,5.86,3,12.09,6.68,9.57,10.94,30.66,2.9,0.1,0.3,0.9399999999999999,-0.06,0.25,1.3,8.42,3.79,0.05,0.15,0.03,5.9,2.98,11.57,6.8,9.550000000000001,11.65,30.85,2.5,0,0,0,0,0,0.9,8,4.25,0,0,0,6,3,10.45,11.5,16.1,15.4,40.5,6.3,0.7,2,5.9,0.9,1.5,3.7,12.8,6.1,0.7,1.5,0.4,10,3,18.9],[8.220000000000001,11.75,12.81,34.41,4.07,0.43,0.87,2.63,3.11,0.71,5.86,10.39,5.05,0.27,0.62,0.2,8.15,20.67,23.67,8.93,12.32,13.58,35.17,4.75,1.38,1.63,2.56,3.76,1.54,6.89,11.06,5.82,1.21,1.44,1.17,8.52,37.58,22.67,8.18,11.7,12.73,34.22,4.03,0.43,0.88,2.66,2.58,0.72,5.3,10.35,5.01,0.27,0.64,0.21,8.07,13.3,23.01,8.18,11.7,12.75,34.3,4.04,0.42,0.86,2.61,2.53,0.7,5.18,10.34,5.02,0.26,0.61,0.2,8.09,12.55,22.49,8.1,11.25,12.5,34.5,4.15,0.35,0.45,1.85,3.25,0.55,6.1,10.9,5.65,0,0.2,0,9,13.3,23.05,12.5,19,20.2,41.5,7.1,1,3.3,9.5,4.5,3.3,7.7,15.2,7.7,1.3,3.1,1.1,14,13.3,36.6]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Candidato<\/th>\n      <th>Método<\/th>\n      <th>Intención de voto (%)<\/th>\n      <th>L. Inferior<\/th>\n      <th>L. Superior<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4]}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+<div id="tabset-1-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-5-tab">
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2023</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>infer_barranquilla <span class="ot">&lt;-</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">intencionVoto</span>(<span class="at">ciudad =</span> <span class="st">"barranquilla"</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">tablas =</span> lista_tablas,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">num_reps =</span> <span class="dv">10000</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>infer_barranquilla <span class="sc">%&gt;%</span> </span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(is.numeric, <span class="sc">~</span> <span class="fu">round</span>(., <span class="at">digits =</span> <span class="dv">2</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datatable</span>(<span class="at">rownames =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-ed5b089cdbef09a153d7" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-ed5b089cdbef09a153d7">{"x":{"filter":"none","vertical":false,"data":[["Alejandro Char","Luis Guzmán","Marco Orozco","Harry Silva","Hassan Fares","Antonio Bohórquez","Ronald Valdés","Rigail Romero","Voto en Blanco","Ninguno","NS/NR","Alejandro Char","Luis Guzmán","Marco Orozco","Harry Silva","Hassan Fares","Antonio Bohórquez","Ronald Valdés","Rigail Romero","Voto en Blanco","Ninguno","NS/NR","Alejandro Char","Luis Guzmán","Marco Orozco","Harry Silva","Hassan Fares","Antonio Bohórquez","Ronald Valdés","Rigail Romero","Voto en Blanco","Ninguno","NS/NR","Alejandro Char","Luis Guzmán","Marco Orozco","Harry Silva","Hassan Fares","Antonio Bohórquez","Ronald Valdés","Rigail Romero","Voto en Blanco","Ninguno","NS/NR","Alejandro Char","Luis Guzmán","Marco Orozco","Harry Silva","Hassan Fares","Antonio Bohórquez","Ronald Valdés","Rigail Romero","Voto en Blanco","Ninguno","NS/NR","Alejandro Char","Luis Guzmán","Marco Orozco","Harry Silva","Hassan Fares","Antonio Bohórquez","Ronald Valdés","Rigail Romero","Voto en Blanco","Ninguno","NS/NR"],["t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ"],[74.19,1.62,2.08,1.67,1.37,10.27,0.34,0.1,6.21,4.8,7.46,73.54000000000001,1.5,1.99,1.6,0.95,9.85,0.28,0.09,5.58,4.08,6.19,74.18000000000001,1.62,2.08,1.67,1.37,10.27,0.34,0.1,6.21,4.82,7.48,74.18000000000001,1.62,2.08,1.67,1.37,10.27,0.34,0.1,6.21,4.82,7.48,74.90000000000001,1.69,2.16,1.64,1.07,10.42,0.12,0.06,6.49,4.82,6.66,85.41,3.42,2.79,3.08,3.68,19.26,1.19,0.27,13.74,6.21,15.35],[70.91,1.34,1.1,1.44,0.86,9.06,0.19,-0.22,5.12,-30.78,4.39,70.81999999999999,2.22,2.1,2.38,1.55,9.82,1.15,0.83,5.6,0.01,4.86,70.77,1.36,1.44,1.46,0.9,9.18,0.2,0,5.21,2,4.97,71.09,1.35,1.47,1.45,0.89,9.119999999999999,0.2,-0.07000000000000001,5.17,0.93,4.86,73.75,1.5,0.9,1.4,0,7.8,0,0,4.7,2,3.75,82.90000000000001,2.4,2.3,2.3,3.6,12.1,1,0,8.6,2,11],[77.47,1.91,3.06,1.9,1.87,11.47,0.49,0.42,7.3,40.38,10.53,78.45,2.81,4.25,2.84,2.46,11.98,1.43,1.42,7.74,4088.59,10.62,77,1.89,2.64,1.89,1.85,11.48,0.49,0.3,7.28,7.6,10.2,77.27,1.89,2.7,1.89,1.85,11.42,0.49,0.27,7.25,8.710000000000001,10.09,76.59999999999999,1.9,3,2,2.1,11.2,0.6,0.4,7.65,7.6,11.7,86.2,3.7,3,3.2,3.7,20.8,1.3,0.4,15.8,7.6,17]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Candidato<\/th>\n      <th>Método<\/th>\n      <th>Intención de voto (%)<\/th>\n      <th>L. Inferior<\/th>\n      <th>L. Superior<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4]}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+<div id="tabset-1-6" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-6-tab">
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2023</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>infer_cartagena <span class="ot">&lt;-</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">intencionVoto</span>(<span class="at">ciudad =</span> <span class="st">"cartagena"</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">tablas =</span> lista_tablas,</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">num_reps =</span> <span class="dv">10000</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>infer_cartagena <span class="sc">%&gt;%</span> </span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(is.numeric, <span class="sc">~</span> <span class="fu">round</span>(., <span class="at">digits =</span> <span class="dv">2</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datatable</span>(<span class="at">rownames =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-03b06b97533ea0deb877" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-03b06b97533ea0deb877">{"x":{"filter":"none","vertical":false,"data":[["Dumek Turbay","José Osorio","William Tirado","Javier Doria","Javier Bejarano","Richard Martínez","Fabio Aristizábal","Nausícrate Pérez","Gustavo Martínez","Eduardo Villanueva","Judith Flórez","Jacqueline Perea","Voto en Blanco","Ninguno","NS/NR","Dumek Turbay","José Osorio","William Tirado","Javier Doria","Javier Bejarano","Richard Martínez","Fabio Aristizábal","Nausícrate Pérez","Gustavo Martínez","Eduardo Villanueva","Judith Flórez","Jacqueline Perea","Voto en Blanco","Ninguno","NS/NR","Dumek Turbay","José Osorio","William Tirado","Javier Doria","Javier Bejarano","Richard Martínez","Fabio Aristizábal","Nausícrate Pérez","Gustavo Martínez","Eduardo Villanueva","Judith Flórez","Jacqueline Perea","Voto en Blanco","Ninguno","NS/NR","Dumek Turbay","José Osorio","William Tirado","Javier Doria","Javier Bejarano","Richard Martínez","Fabio Aristizábal","Nausícrate Pérez","Gustavo Martínez","Eduardo Villanueva","Judith Flórez","Jacqueline Perea","Voto en Blanco","Ninguno","NS/NR","Dumek Turbay","José Osorio","William Tirado","Javier Doria","Javier Bejarano","Richard Martínez","Fabio Aristizábal","Nausícrate Pérez","Gustavo Martínez","Eduardo Villanueva","Judith Flórez","Jacqueline Perea","Voto en Blanco","Ninguno","NS/NR","Dumek Turbay","José Osorio","William Tirado","Javier Doria","Javier Bejarano","Richard Martínez","Fabio Aristizábal","Nausícrate Pérez","Gustavo Martínez","Eduardo Villanueva","Judith Flórez","Jacqueline Perea","Voto en Blanco","Ninguno","NS/NR"],["t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","t-student - log","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICQ","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootPromedio-ICEE","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMediana-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ","BootMáximo-ICQ"],[35.25,2.97,15.42,1.27,8.35,0.58,2.75,0.8,0.82,0.65,9.199999999999999,2.9,5.83,4.53,11.6,34.96,2.92,15.19,1.14,7.72,0.42,1.09,0.62,0.66,0.53,8.98,2.62,5.25,4.14,11.34,35.24,2.97,15.42,1.27,8.35,0.58,2.77,0.8,0.82,0.65,9.199999999999999,2.89,5.82,4.53,11.61,35.24,2.97,15.42,1.27,8.35,0.58,2.77,0.8,0.82,0.65,9.199999999999999,2.89,5.82,4.53,11.61,34.32,2.95,14.9,1.09,8.77,0.36,1.08,0.61,0.71,0.59,9.279999999999999,2.75,6.06,4.51,11.65,41.83,3.74,19.41,2.47,11.55,1.67,9.77,2.04,1.88,1.45,11.56,4.75,8.550000000000001,6.51,14],[29.78,2.26,12.13,0.3,4.76,-0.32,-3.06,-0.23,-0.09,-0.08,6.85,1.21,2.93,0.89,7.03,31.21,3.28,13.4,1.46,5.53,0.85,0.71,0.96,1.02,0.99,7.83,2.31,3.7,2.49,8.449999999999999,32.02,2.5,13.4,0.7,5.85,0.03,0.2,0.2,0.25,0.17,7.55,1.77,3.73,2.6,9,31.42,2.48,13.14,0.61,5.86,-0.04,-1.28,0.07000000000000001,0.18,0.14,7.57,1.72,3.79,2.59,9.17,31.15,2.35,13,0.55,4.25,0,0,0,0,0,6.85,1.4,2.8,1.8,8,35.2,3,15,1,10,0.2,1,0.9,1,1,10,3,7.2,4,11.4],[40.72,3.68,18.71,2.24,11.94,1.48,8.56,1.83,1.73,1.38,11.55,4.59,8.74,8.16,16.17,41.44,4.69,19.55,3.13,13.74,2.37,6.14,2.71,2.7,2.38,12.73,5.67,10.55,10.61,18.02,39.5,3.5,17.95,2,10.7,1.25,7.37,1.62,1.48,1.18,10.8,4.1,7.73,6.47,14.1,39.07,3.46,17.7,1.94,10.85,1.21,6.82,1.52,1.45,1.16,10.83,4.06,7.86,6.47,14.06,40.5,3.55,18.75,2.25,11.5,1.65,7.65,1.8,1.7,1.35,11.5,4.8,8.5,7.3,15,45,4.1,21.1,3,12,2,14,2.6,2.3,1.7,12,5.1,9,7.3,15]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Candidato<\/th>\n      <th>Método<\/th>\n      <th>Intención de voto (%)<\/th>\n      <th>L. Inferior<\/th>\n      <th>L. Superior<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4]}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="exportando-estimaciones" class="level1">
+<h1>Exportando estimaciones</h1>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(infer_bogota, <span class="st">"datos-estimaciones/estimacion_bogota.csv"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(infer_medellin, <span class="st">"datos-estimaciones/estimacion_medellin.csv"</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(infer_cali, <span class="st">"datos-estimaciones/estimacion_cali.csv"</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(infer_bucaramanga, <span class="st">"datos-estimaciones/estimacion_bucaramanga.csv"</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(infer_barranquilla, <span class="st">"datos-estimaciones/estimacion_barranquilla.csv"</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(infer_cartagena, <span class="st">"datos-estimaciones/estimacion_cartagena.csv"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="libro-de-referencia" class="level1">
+<h1>Libro de referencia</h1>
+<ul>
+<li><a href="https://moderndive.com/">Statistical Inference via Data Science A ModernDive into R and the Tidyverse</a></li>
+</ul>
+<p><img src="https://d33wubrfki0l68.cloudfront.net/19dafd10a53785f1407566a1f3a09b29a6bab847/1e5f0/images/logos/book_cover.png" class="img-fluid" style="width:50.0%"></p>
+<!-- -->
+
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    const typesetMath = (el) => {
+      if (window.MathJax) {
+        // MathJax Typeset
+        window.MathJax.typeset([el]);
+      } else if (window.katex) {
+        // KaTeX Render
+        var mathElements = el.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            window.katex.render(texText.data, mathElements[i], {
+              displayMode: mathElements[i].classList.contains('display'),
+              throwOnError: false,
+              macros: macros,
+              fleqn: false
+            });
+          }
+        }
+      }
+    }
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
+        }
+        typesetMath(container);
+        return container.innerHTML
+      } else {
+        typesetMath(note);
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      typesetMath(note);
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Ejecutar el código</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb12" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Elecciones regionales Colombia 2023 - Estimación de intención de voto"</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Sidereus"</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="an">lang:</span><span class="co"> es </span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span><span class="co"> </span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co">  eval: true</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co">  echo: true</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co">    page-layout: article</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co">    fig-width: 6</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co">    fig-height: 4.5</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="co">    fig-align: center</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-title: "Tabla de contenido"</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="co">    smooth-scroll: true</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="co">    df-print: paged</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-location: left</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="co">    number-depth: 4</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="co">    theme: yeti</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a><span class="co">    code-copy: true</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a><span class="co">    highlight-style: github</span></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a><span class="co">    css: estilo.css</span></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools:</span></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a><span class="co">      source: true</span></span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, include=FALSE}</span></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::opts_chunk$set(fig.align = "center", warning = FALSE, message = FALSE)</span></span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a><span class="fu"># Recursos de información</span></span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Elecciones locales de Bogotá de 2023</span><span class="co">](https://es.wikipedia.org/wiki/Elecciones_locales_de_Bogot%C3%A1_de_2023#)</span></span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Elecciones locales de Medellín de 2023</span><span class="co">](https://es.wikipedia.org/wiki/Elecciones_locales_de_Medell%C3%ADn_de_2023#)</span></span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Elecciones locales de Cali de 2023</span><span class="co">](https://es.wikipedia.org/wiki/Elecciones_locales_de_Cali_de_2023)</span></span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Elecciones locales de Barranquilla de 2023</span><span class="co">](https://es.wikipedia.org/wiki/Elecciones_locales_de_Barranquilla_de_2023)</span></span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Elecciones locales de Cartagena de Indias de 2023</span><span class="co">](https://es.wikipedia.org/wiki/Elecciones_locales_de_Cartagena_de_Indias_de_2023)</span></span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a><span class="fu"># Bibliotecas</span></span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(infer)</span>
+<span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(devtools)</span>
+<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
+<span id="cb12-52"><a href="#cb12-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-53"><a href="#cb12-53" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>())</span>
+<span id="cb12-54"><a href="#cb12-54" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb12-55"><a href="#cb12-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-56"><a href="#cb12-56" aria-hidden="true" tabindex="-1"></a><span class="fu"># Funciones</span></span>
+<span id="cb12-57"><a href="#cb12-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-58"><a href="#cb12-58" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Las funciones con los seis métodos de estimación pueden ser obtenidas en el <span class="co">[</span><span class="ot">repositorio de Github para intención de voto en elecciones presidenciales del año 2022 en Colombia.</span><span class="co">](https://github.com/Edimer/Encuestas-Colombia-2022/tree/main/functions-R)</span></span>
+<span id="cb12-59"><a href="#cb12-59" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>La función que integra todos los métodos de estimación (6 en total) puede ser obtenida en el <span class="co">[</span><span class="ot">repositorio de Github.</span><span class="co">]()</span></span>
+<span id="cb12-60"><a href="#cb12-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-63"><a href="#cb12-63" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb12-64"><a href="#cb12-64" aria-hidden="true" tabindex="-1"></a><span class="fu">source_url</span>(<span class="st">"https://raw.githubusercontent.com/Edimer/Encuestas-Colombia-2022/main/functions-R/infer1.R"</span>)</span>
+<span id="cb12-65"><a href="#cb12-65" aria-hidden="true" tabindex="-1"></a><span class="fu">source_url</span>(<span class="st">"https://raw.githubusercontent.com/Edimer/Encuestas-Colombia-2022/main/functions-R/infer2.R"</span>)</span>
+<span id="cb12-66"><a href="#cb12-66" aria-hidden="true" tabindex="-1"></a><span class="fu">source_url</span>(<span class="st">"https://raw.githubusercontent.com/Edimer/Encuestas-Colombia-2022/main/functions-R/infer3.R"</span>)</span>
+<span id="cb12-67"><a href="#cb12-67" aria-hidden="true" tabindex="-1"></a><span class="fu">source_url</span>(<span class="st">"https://raw.githubusercontent.com/Edimer/Encuestas-Colombia-2022/main/functions-R/infer4.R"</span>)</span>
+<span id="cb12-68"><a href="#cb12-68" aria-hidden="true" tabindex="-1"></a><span class="fu">source_url</span>(<span class="st">"https://raw.githubusercontent.com/Edimer/Encuestas-Colombia-2022/main/functions-R/infer5.R"</span>)</span>
+<span id="cb12-69"><a href="#cb12-69" aria-hidden="true" tabindex="-1"></a><span class="fu">source_url</span>(<span class="st">"https://raw.githubusercontent.com/Edimer/Encuestas-Colombia-2022/main/functions-R/infer6.R"</span>)</span>
+<span id="cb12-70"><a href="#cb12-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-71"><a href="#cb12-71" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"funciones-r/03-inferencia/intencionVoto.R"</span>, <span class="at">encoding =</span> <span class="st">"UTF-8"</span>)</span>
+<span id="cb12-72"><a href="#cb12-72" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb12-73"><a href="#cb12-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-74"><a href="#cb12-74" aria-hidden="true" tabindex="-1"></a><span class="fu"># Datos</span></span>
+<span id="cb12-75"><a href="#cb12-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-76"><a href="#cb12-76" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Los datos pueden ser descargados del <span class="co">[</span><span class="ot">repositorio de Github.</span><span class="co">](https://github.com/Edimer/votaciones-colombia-2023/tree/main/datos-encuestas)</span></span>
+<span id="cb12-77"><a href="#cb12-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-80"><a href="#cb12-80" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb12-81"><a href="#cb12-81" aria-hidden="true" tabindex="-1"></a>tabla_bogota <span class="ot">&lt;-</span></span>
+<span id="cb12-82"><a href="#cb12-82" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(<span class="st">"datos-encuestas/tabla_bogota.csv"</span>)</span>
+<span id="cb12-83"><a href="#cb12-83" aria-hidden="true" tabindex="-1"></a>tabla_medellin <span class="ot">&lt;-</span></span>
+<span id="cb12-84"><a href="#cb12-84" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(<span class="st">"datos-encuestas/tabla_medellín.csv"</span>)</span>
+<span id="cb12-85"><a href="#cb12-85" aria-hidden="true" tabindex="-1"></a>tabla_cali <span class="ot">&lt;-</span></span>
+<span id="cb12-86"><a href="#cb12-86" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(<span class="st">"datos-encuestas/tabla_cali.csv"</span>)</span>
+<span id="cb12-87"><a href="#cb12-87" aria-hidden="true" tabindex="-1"></a>tabla_bquilla <span class="ot">&lt;-</span></span>
+<span id="cb12-88"><a href="#cb12-88" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(<span class="st">"datos-encuestas/tabla_bquilla.csv"</span>)</span>
+<span id="cb12-89"><a href="#cb12-89" aria-hidden="true" tabindex="-1"></a>tabla_cartagena <span class="ot">&lt;-</span></span>
+<span id="cb12-90"><a href="#cb12-90" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(<span class="st">"datos-encuestas/tabla_cartagena.csv"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-91"><a href="#cb12-91" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(</span>
+<span id="cb12-92"><a href="#cb12-92" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Fernando Támara</span><span class="st">`</span>,</span>
+<span id="cb12-93"><a href="#cb12-93" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Hector Pérez</span><span class="st">`</span>,</span>
+<span id="cb12-94"><a href="#cb12-94" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Reynaldo Tovar</span><span class="st">`</span>,</span>
+<span id="cb12-95"><a href="#cb12-95" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Luis Carvajalino</span><span class="st">`</span></span>
+<span id="cb12-96"><a href="#cb12-96" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb12-97"><a href="#cb12-97" aria-hidden="true" tabindex="-1"></a>tabla_bucaramanga <span class="ot">&lt;-</span></span>
+<span id="cb12-98"><a href="#cb12-98" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(<span class="st">"datos-encuestas/tabla_bucaramanga.csv"</span>)</span>
+<span id="cb12-99"><a href="#cb12-99" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb12-100"><a href="#cb12-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-101"><a href="#cb12-101" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Asigno las tablas a una lista para poder identificarlas a través del nombre de la ciudad:</span>
+<span id="cb12-102"><a href="#cb12-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-105"><a href="#cb12-105" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb12-106"><a href="#cb12-106" aria-hidden="true" tabindex="-1"></a>lista_tablas <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb12-107"><a href="#cb12-107" aria-hidden="true" tabindex="-1"></a>  <span class="at">bogota =</span> tabla_bogota,</span>
+<span id="cb12-108"><a href="#cb12-108" aria-hidden="true" tabindex="-1"></a>  <span class="at">medellin =</span> tabla_medellin,</span>
+<span id="cb12-109"><a href="#cb12-109" aria-hidden="true" tabindex="-1"></a>  <span class="at">cali =</span> tabla_cali,</span>
+<span id="cb12-110"><a href="#cb12-110" aria-hidden="true" tabindex="-1"></a>  <span class="at">bucaramanga =</span> tabla_bucaramanga,</span>
+<span id="cb12-111"><a href="#cb12-111" aria-hidden="true" tabindex="-1"></a>  <span class="at">cartagena =</span> tabla_cartagena,</span>
+<span id="cb12-112"><a href="#cb12-112" aria-hidden="true" tabindex="-1"></a>  <span class="at">barranquilla =</span> tabla_bquilla</span>
+<span id="cb12-113"><a href="#cb12-113" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-114"><a href="#cb12-114" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb12-115"><a href="#cb12-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-116"><a href="#cb12-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-117"><a href="#cb12-117" aria-hidden="true" tabindex="-1"></a><span class="fu"># Estimación de intención de voto</span></span>
+<span id="cb12-118"><a href="#cb12-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-119"><a href="#cb12-119" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>En este caso se asume que cada encuesta es una *realización o experimento*, el parámetro de interés es $\mu_p$, que podría ser descrito como el promedio de intención de voto. Esta proporción es de interés estimarla para saber cuál sería el verdadero porcentaje de personas que votaría por un candidato.</span>
+<span id="cb12-120"><a href="#cb12-120" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Se proponen seis métodos para estimar la intención de voto:</span>
+<span id="cb12-121"><a href="#cb12-121" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>**Inferencia clásica original (infer1):** prueba *t-student* para una población. En este caso la variable de interés (proporción) se mantiene en sus unidades originales.</span>
+<span id="cb12-122"><a href="#cb12-122" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>**Inferencia clásica logaritmo (infer2):** prueba *t-student* para una población. En este caso la variable de interés (proporción) se transforma a través de logaritmos.</span>
+<span id="cb12-123"><a href="#cb12-123" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>**Inferencia no paramétrica: Bootstrapping (infer3):** implementación de técnicas de remuestreo no paramétrico para estimación puntual y construcción de intervalos de confianza **promedio** de intención de voto. Intervalos de confianza con el método de percentiles.</span>
+<span id="cb12-124"><a href="#cb12-124" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>**Inferencia no paramétrica: Bootstrapping (infer4):** implementación de técnicas de remuestreo no paramétrico para estimación puntual y construcción de intervalos de confianza para el **promedio** de intención de voto. Intervalos de confianza con el método de error estándar.</span>
+<span id="cb12-125"><a href="#cb12-125" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>**Inferencia no paramétrica: Bootstrapping (infer5):** implementación de técnicas de remuestreo no paramétrico para estimación puntual y construcción de intervalos de confianza para la **mediana** de intención de voto. Intervalos de confianza con el método de percentiles.</span>
+<span id="cb12-126"><a href="#cb12-126" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>**Inferencia no paramétrica: Bootstrapping (infer6):** implementación de técnicas de remuestreo no paramétrico para estimación puntual y construcción de intervalos de confianza para el **máximo** de intención de voto. Intervalos de confianza con el método de percentiles.  </span>
+<span id="cb12-127"><a href="#cb12-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-128"><a href="#cb12-128" aria-hidden="true" tabindex="-1"></a>:::{.panel-tabset}</span>
+<span id="cb12-129"><a href="#cb12-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-130"><a href="#cb12-130" aria-hidden="true" tabindex="-1"></a><span class="fu">## Bogotá</span></span>
+<span id="cb12-131"><a href="#cb12-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-134"><a href="#cb12-134" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb12-135"><a href="#cb12-135" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2023</span>)</span>
+<span id="cb12-136"><a href="#cb12-136" aria-hidden="true" tabindex="-1"></a>infer_bogota <span class="ot">&lt;-</span></span>
+<span id="cb12-137"><a href="#cb12-137" aria-hidden="true" tabindex="-1"></a>  <span class="fu">intencionVoto</span>(<span class="at">ciudad =</span> <span class="st">"bogota"</span>,</span>
+<span id="cb12-138"><a href="#cb12-138" aria-hidden="true" tabindex="-1"></a>                <span class="at">tablas =</span> lista_tablas,</span>
+<span id="cb12-139"><a href="#cb12-139" aria-hidden="true" tabindex="-1"></a>                <span class="at">num_reps =</span> <span class="dv">10000</span>)</span>
+<span id="cb12-140"><a href="#cb12-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-141"><a href="#cb12-141" aria-hidden="true" tabindex="-1"></a>infer_bogota <span class="sc">%&gt;%</span></span>
+<span id="cb12-142"><a href="#cb12-142" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(is.numeric, <span class="sc">~</span> <span class="fu">round</span>(., <span class="at">digits =</span> <span class="dv">2</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb12-143"><a href="#cb12-143" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datatable</span>(<span class="at">rownames =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb12-144"><a href="#cb12-144" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb12-145"><a href="#cb12-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-146"><a href="#cb12-146" aria-hidden="true" tabindex="-1"></a><span class="fu">## Medellín</span></span>
+<span id="cb12-147"><a href="#cb12-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-150"><a href="#cb12-150" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb12-151"><a href="#cb12-151" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2023</span>)</span>
+<span id="cb12-152"><a href="#cb12-152" aria-hidden="true" tabindex="-1"></a>infer_medellin <span class="ot">&lt;-</span></span>
+<span id="cb12-153"><a href="#cb12-153" aria-hidden="true" tabindex="-1"></a>  <span class="fu">intencionVoto</span>(<span class="at">ciudad =</span> <span class="st">"medellin"</span>,</span>
+<span id="cb12-154"><a href="#cb12-154" aria-hidden="true" tabindex="-1"></a>                <span class="at">tablas =</span> lista_tablas,</span>
+<span id="cb12-155"><a href="#cb12-155" aria-hidden="true" tabindex="-1"></a>                <span class="at">num_reps =</span> <span class="dv">10000</span>)</span>
+<span id="cb12-156"><a href="#cb12-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-157"><a href="#cb12-157" aria-hidden="true" tabindex="-1"></a>infer_medellin <span class="sc">%&gt;%</span> </span>
+<span id="cb12-158"><a href="#cb12-158" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(is.numeric, <span class="sc">~</span> <span class="fu">round</span>(., <span class="at">digits =</span> <span class="dv">2</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb12-159"><a href="#cb12-159" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datatable</span>(<span class="at">rownames =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb12-160"><a href="#cb12-160" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb12-161"><a href="#cb12-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-162"><a href="#cb12-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-163"><a href="#cb12-163" aria-hidden="true" tabindex="-1"></a><span class="fu">## Cali</span></span>
+<span id="cb12-164"><a href="#cb12-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-167"><a href="#cb12-167" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb12-168"><a href="#cb12-168" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2023</span>)</span>
+<span id="cb12-169"><a href="#cb12-169" aria-hidden="true" tabindex="-1"></a>infer_cali <span class="ot">&lt;-</span></span>
+<span id="cb12-170"><a href="#cb12-170" aria-hidden="true" tabindex="-1"></a>  <span class="fu">intencionVoto</span>(<span class="at">ciudad =</span> <span class="st">"cali"</span>,</span>
+<span id="cb12-171"><a href="#cb12-171" aria-hidden="true" tabindex="-1"></a>                <span class="at">tablas =</span> lista_tablas,</span>
+<span id="cb12-172"><a href="#cb12-172" aria-hidden="true" tabindex="-1"></a>                <span class="at">num_reps =</span> <span class="dv">10000</span>)</span>
+<span id="cb12-173"><a href="#cb12-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-174"><a href="#cb12-174" aria-hidden="true" tabindex="-1"></a>infer_cali <span class="sc">%&gt;%</span> </span>
+<span id="cb12-175"><a href="#cb12-175" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(is.numeric, <span class="sc">~</span> <span class="fu">round</span>(., <span class="at">digits =</span> <span class="dv">2</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb12-176"><a href="#cb12-176" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datatable</span>(<span class="at">rownames =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb12-177"><a href="#cb12-177" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb12-178"><a href="#cb12-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-179"><a href="#cb12-179" aria-hidden="true" tabindex="-1"></a><span class="fu">## Bucaramanga</span></span>
+<span id="cb12-180"><a href="#cb12-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-183"><a href="#cb12-183" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb12-184"><a href="#cb12-184" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2023</span>)</span>
+<span id="cb12-185"><a href="#cb12-185" aria-hidden="true" tabindex="-1"></a>infer_bucaramanga <span class="ot">&lt;-</span></span>
+<span id="cb12-186"><a href="#cb12-186" aria-hidden="true" tabindex="-1"></a>  <span class="fu">intencionVoto</span>(<span class="at">ciudad =</span> <span class="st">"bucaramanga"</span>,</span>
+<span id="cb12-187"><a href="#cb12-187" aria-hidden="true" tabindex="-1"></a>                <span class="at">tablas =</span> lista_tablas,</span>
+<span id="cb12-188"><a href="#cb12-188" aria-hidden="true" tabindex="-1"></a>                <span class="at">num_reps =</span> <span class="dv">10000</span>)</span>
+<span id="cb12-189"><a href="#cb12-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-190"><a href="#cb12-190" aria-hidden="true" tabindex="-1"></a>infer_bucaramanga <span class="sc">%&gt;%</span> </span>
+<span id="cb12-191"><a href="#cb12-191" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(is.numeric, <span class="sc">~</span> <span class="fu">round</span>(., <span class="at">digits =</span> <span class="dv">2</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb12-192"><a href="#cb12-192" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datatable</span>(<span class="at">rownames =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb12-193"><a href="#cb12-193" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb12-194"><a href="#cb12-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-195"><a href="#cb12-195" aria-hidden="true" tabindex="-1"></a><span class="fu">## Barranquilla</span></span>
+<span id="cb12-196"><a href="#cb12-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-199"><a href="#cb12-199" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb12-200"><a href="#cb12-200" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2023</span>)</span>
+<span id="cb12-201"><a href="#cb12-201" aria-hidden="true" tabindex="-1"></a>infer_barranquilla <span class="ot">&lt;-</span></span>
+<span id="cb12-202"><a href="#cb12-202" aria-hidden="true" tabindex="-1"></a>  <span class="fu">intencionVoto</span>(<span class="at">ciudad =</span> <span class="st">"barranquilla"</span>,</span>
+<span id="cb12-203"><a href="#cb12-203" aria-hidden="true" tabindex="-1"></a>                <span class="at">tablas =</span> lista_tablas,</span>
+<span id="cb12-204"><a href="#cb12-204" aria-hidden="true" tabindex="-1"></a>                <span class="at">num_reps =</span> <span class="dv">10000</span>)</span>
+<span id="cb12-205"><a href="#cb12-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-206"><a href="#cb12-206" aria-hidden="true" tabindex="-1"></a>infer_barranquilla <span class="sc">%&gt;%</span> </span>
+<span id="cb12-207"><a href="#cb12-207" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(is.numeric, <span class="sc">~</span> <span class="fu">round</span>(., <span class="at">digits =</span> <span class="dv">2</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb12-208"><a href="#cb12-208" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datatable</span>(<span class="at">rownames =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb12-209"><a href="#cb12-209" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb12-210"><a href="#cb12-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-211"><a href="#cb12-211" aria-hidden="true" tabindex="-1"></a><span class="fu">## Cartagena</span></span>
+<span id="cb12-212"><a href="#cb12-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-215"><a href="#cb12-215" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb12-216"><a href="#cb12-216" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2023</span>)</span>
+<span id="cb12-217"><a href="#cb12-217" aria-hidden="true" tabindex="-1"></a>infer_cartagena <span class="ot">&lt;-</span></span>
+<span id="cb12-218"><a href="#cb12-218" aria-hidden="true" tabindex="-1"></a>  <span class="fu">intencionVoto</span>(<span class="at">ciudad =</span> <span class="st">"cartagena"</span>,</span>
+<span id="cb12-219"><a href="#cb12-219" aria-hidden="true" tabindex="-1"></a>                <span class="at">tablas =</span> lista_tablas,</span>
+<span id="cb12-220"><a href="#cb12-220" aria-hidden="true" tabindex="-1"></a>                <span class="at">num_reps =</span> <span class="dv">10000</span>)</span>
+<span id="cb12-221"><a href="#cb12-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-222"><a href="#cb12-222" aria-hidden="true" tabindex="-1"></a>infer_cartagena <span class="sc">%&gt;%</span> </span>
+<span id="cb12-223"><a href="#cb12-223" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(is.numeric, <span class="sc">~</span> <span class="fu">round</span>(., <span class="at">digits =</span> <span class="dv">2</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb12-224"><a href="#cb12-224" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datatable</span>(<span class="at">rownames =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb12-225"><a href="#cb12-225" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb12-226"><a href="#cb12-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-227"><a href="#cb12-227" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb12-228"><a href="#cb12-228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-229"><a href="#cb12-229" aria-hidden="true" tabindex="-1"></a><span class="fu"># Exportando estimaciones</span></span>
+<span id="cb12-230"><a href="#cb12-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-231"><a href="#cb12-231" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval = FALSE}</span></span>
+<span id="cb12-232"><a href="#cb12-232" aria-hidden="true" tabindex="-1"></a><span class="in">write_csv(infer_bogota, "datos-estimaciones/estimacion_bogota.csv")</span></span>
+<span id="cb12-233"><a href="#cb12-233" aria-hidden="true" tabindex="-1"></a><span class="in">write_csv(infer_medellin, "datos-estimaciones/estimacion_medellin.csv")</span></span>
+<span id="cb12-234"><a href="#cb12-234" aria-hidden="true" tabindex="-1"></a><span class="in">write_csv(infer_cali, "datos-estimaciones/estimacion_cali.csv")</span></span>
+<span id="cb12-235"><a href="#cb12-235" aria-hidden="true" tabindex="-1"></a><span class="in">write_csv(infer_bucaramanga, "datos-estimaciones/estimacion_bucaramanga.csv")</span></span>
+<span id="cb12-236"><a href="#cb12-236" aria-hidden="true" tabindex="-1"></a><span class="in">write_csv(infer_barranquilla, "datos-estimaciones/estimacion_barranquilla.csv")</span></span>
+<span id="cb12-237"><a href="#cb12-237" aria-hidden="true" tabindex="-1"></a><span class="in">write_csv(infer_cartagena, "datos-estimaciones/estimacion_cartagena.csv")</span></span>
+<span id="cb12-238"><a href="#cb12-238" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb12-239"><a href="#cb12-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-240"><a href="#cb12-240" aria-hidden="true" tabindex="-1"></a><span class="fu"># Libro de referencia</span></span>
+<span id="cb12-241"><a href="#cb12-241" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-242"><a href="#cb12-242" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Statistical Inference via Data Science A ModernDive into R and the Tidyverse</span><span class="co">](https://moderndive.com/)</span></span>
+<span id="cb12-243"><a href="#cb12-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-244"><a href="#cb12-244" aria-hidden="true" tabindex="-1"></a><span class="al">![](https://d33wubrfki0l68.cloudfront.net/19dafd10a53785f1407566a1f3a09b29a6bab847/1e5f0/images/logos/book_cover.png)</span>{width="50%"}</span>
+</code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+
+<script src="03-estimaciones-intencion-voto_files/libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

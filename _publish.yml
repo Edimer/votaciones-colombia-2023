@@ -2,3 +2,7 @@
   quarto-pub:
     - id: d85f1049-2f3f-4a1b-8548-f5eaeee4963d
       url: 'https://edimer.quarto.pub/encuestas-elecciones-regionales-colombia-2023'
+- source: 02-exploratorio.qmd
+  quarto-pub:
+    - id: 3b317aee-a9e2-4291-8e5a-2ee6ae9ed960
+      url: 'https://edimer.quarto.pub/exploratorio-elecciones-regionales-colombia-2023'

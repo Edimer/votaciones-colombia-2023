@@ -53,6 +53,8 @@ theme_set(theme_minimal())
 
 # Funciones
 
+- Las funciones pueden ser obtenidas en el [repositorio de Github.](https://github.com/Edimer/votaciones-colombia-2023/tree/main/funciones-r/02-exploratorio)
+
 ```{r}
 source("funciones-r/02-exploratorio/distPlot.R", encoding = "UTF-8")
 source("funciones-r/02-exploratorio/seriePlot.R", encoding = "UTF-8")
