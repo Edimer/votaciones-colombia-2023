@@ -6,3 +6,7 @@
   quarto-pub:
     - id: 3b317aee-a9e2-4291-8e5a-2ee6ae9ed960
       url: 'https://edimer.quarto.pub/exploratorio-elecciones-regionales-colombia-2023'
+- source: 03-estimaciones-intencion-voto.qmd
+  quarto-pub:
+    - id: 86f661f8-d011-4728-ba3d-dd41c4cb1570
+      url: 'https://edimer.quarto.pub/elecciones-regionales-colombia-2023-estimacion-intencion-voto'
