@@ -1,6 +1,5 @@
 ---
-title: "Web scraping - Extracción de datos"
-subtitle: "Elecciones regionales Colombia 2023"
+title: "Elecciones regionales Colombia 2023 - Extracción de datos"
 author: "Sidereus"
 lang: es 
 execute: 
@@ -49,14 +48,20 @@ library(rvest)
 
 # Funciones
 
+- Las funciones pueden ser obtenidas en el [repositorio de Github.]()
+
 ```{r}
-source("funciones-r/infoBogota.R", encoding = "UTF-8")
-source("funciones-r/infoMedellin.R", encoding = "UTF-8")
-source("funciones-r/infoCali.R", encoding = "UTF-8")
-source("funciones-r/infoBquilla.R", encoding = "UTF-8")
-source("funciones-r/infoCartagena.R", encoding = "UTF-8")
-source("funciones-r/infoBucaramanga.R", encoding = "UTF-8")
+source("funciones-r/01-scraping/infoBogota.R", encoding = "UTF-8")
+source("funciones-r/01-scraping/infoMedellin.R", encoding = "UTF-8")
+source("funciones-r/01-scraping/infoCali.R", encoding = "UTF-8")
+source("funciones-r/01-scraping/infoBquilla.R", encoding = "UTF-8")
+source("funciones-r/01-scraping/infoCartagena.R", encoding = "UTF-8")
+source("funciones-r/01-scraping/infoBucaramanga.R", encoding = "UTF-8")
 ```
+
+# Fecha de encuestas
+
+- Las encuestas tienen rango de fechas desde el 01 de agosto de 2023 hasta el 28 de octubre de 2023 (un día antes de las elecciones regionales del 2023 en Colombia).
 
 # Extracción de datos
 
